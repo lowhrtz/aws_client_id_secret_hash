@@ -113,18 +113,19 @@ impl Config {
         let mut client_id = String::new();
         let mut client_secret = String::new();
 
-        println!("The default or supplied configuration file doesn't exist.");
-        println!("Enter the info to generate it.");
-        println!("Client ID:");
+        eprintln!("aws_client_id_secret_hash:");
+        eprintln!("The default or supplied configuration file doesn't exist.");
+        eprintln!("Enter the info to generate it.");
+        eprintln!("Client ID:");
         match std::io::stdin().read_line(&mut client_id) {
             Ok(_clid) => {},
-            Err(_) => println!("Problem with input"),
+            Err(_) => eprintln!("Problem with input"),
         }
         
         println!("Client Secret:");
         match std::io::stdin().read_line(&mut client_secret) {
             Ok(_clsec) => {},
-            Err(_) => println!("Problem with input"),
+            Err(_) => eprintln!("Problem with input"),
         }
         //println!("{} {}", client_id.trim(), client_secret.trim());
 
