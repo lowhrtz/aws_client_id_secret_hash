@@ -81,7 +81,13 @@ impl Config {
         };
 
         // Retreive properties
-        let props = ini.general_section();
+        // Instead of `let props = ini.general_section();`
+        // the following 5 lines give more control over flow.
+        let empty_props = ini::ini::Properties::new();
+        let props = match ini.section::<String>(None) {
+            Some(p) => p,
+            None => &empty_props,
+        };
         //println!("{}", props.len());
 
         let missing_text = "directive missing from the configurstion file.\n\
