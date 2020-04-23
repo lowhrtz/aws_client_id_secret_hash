@@ -122,7 +122,7 @@ impl Config {
             Err(_) => eprintln!("Problem with input"),
         }
         
-        println!("Client Secret:");
+        eprintln!("Client Secret:");
         match std::io::stdin().read_line(&mut client_secret) {
             Ok(_clsec) => {},
             Err(_) => eprintln!("Problem with input"),
