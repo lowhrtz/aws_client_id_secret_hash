@@ -90,7 +90,7 @@ impl Config {
         };
         //println!("{}", props.len());
 
-        let missing_text = "directive missing from the configurstion file.\n\
+        let missing_text = "directive missing from the configuration file.\n\
                             Either add the directive to the file or \
                             move the file and run this again.";
         let client_id = match props.get("client_id") {
