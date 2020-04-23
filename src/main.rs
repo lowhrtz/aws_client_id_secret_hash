@@ -118,14 +118,14 @@ impl Config {
         eprintln!("Enter the info to generate it.");
         eprintln!("Client ID:");
         match std::io::stdin().read_line(&mut client_id) {
-            Ok(_clid) => {},
-            Err(_) => eprintln!("Problem with input"),
+            Ok(_) => {},
+            Err(e) => eprintln!("Problem with input: {}", e),
         }
         
         eprintln!("Client Secret:");
         match std::io::stdin().read_line(&mut client_secret) {
-            Ok(_clsec) => {},
-            Err(_) => eprintln!("Problem with input"),
+            Ok(_) => {},
+            Err(e) => eprintln!("Problem with input: {}", e),
         }
         //println!("{} {}", client_id.trim(), client_secret.trim());
 
