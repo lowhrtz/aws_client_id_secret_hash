@@ -90,14 +90,14 @@ impl Config {
         let client_id = match props.get("client_id") {
             Some(clid) => clid.to_string(),
             None => {
-                println!("WARNING: client_id {}", missing_text);
+                eprintln!("WARNING: client_id {}", missing_text);
                 String::new()
             },
         };
         let client_secret = match props.get("client_secret") {
             Some(clsec) => clsec.to_string(),
             None => {
-                println!("WARNING: client_secret {}", missing_text);
+                eprintln!("WARNING: client_secret {}", missing_text);
                 String::new()
             },
         };
