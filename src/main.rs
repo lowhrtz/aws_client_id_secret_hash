@@ -1,3 +1,18 @@
+// aws_client_id_secret_hash
+// Copyright (C) 2020 Giancarlo DiMino
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 use base64::encode;
 use clap::{Arg, App};
 use hmac::{Hmac, Mac};
@@ -37,18 +52,14 @@ fn main() {
     message.push_str(client_id);
     let message = message.as_bytes();
 
-    // Create HMAC-SHA256 instance which implements `Mac` trait
+    // Create HMAC-SHA256 instance
     let mut mac = HmacSha256::new_varkey(client_secret)
         .expect("HMAC can take key of any size");
     mac.input(message);
 
-    // `result` has type `MacResult` which is a thin wrapper around array of
-    // bytes for providing constant time equality check
     let result = mac.result();
-    // To get underlying array use `code` method, but be carefull, since
-    // incorrect use of the code value may permit timing attacks which defeat
-    // the security provided by the `MacResult`
     let code_bytes = result.code();
+    // Base64 encode the code byte array and print
     println!("{}", encode(code_bytes));
 }
 
