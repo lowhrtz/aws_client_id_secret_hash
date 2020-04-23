@@ -22,7 +22,7 @@ use sha2::Sha256;
 type HmacSha256 = Hmac<Sha256>;
 
 // Default configuration file name
-const DEFAULT_CONFIG: &str = "aws_hash.cfg";
+const DEFAULT_CONFIG: &str = "aws_client.cfg";
 
 fn main() {
     let matches = App::new("AWS ClientID Secret Hash")
